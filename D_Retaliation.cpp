@@ -38,57 +38,27 @@ ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) %
 void solve() {
     int t;
     cin >> t;
-    v primes=sieve(1e5);
-    // print(primes);
     while (t--) {
         ll n;
         cin >> n;
-        v a,b;
-        int j=2;
-        for(int i=3;i<=n;i++){
-            if(i==primes[j]){
-                a.push_back(i);
-                j++;
-            }
-            else b.push_back(i);
-        }
-        cout<<"2 1 ";
-        if(n==2){
-            cout<<endl;
+        v a=input(n);
+        ll c=n*n-1;
+        if(a[0]*n-a.back()<0 || (a[0]*n-a.back())%c!=0){
+            no;
             continue;
         }
-        if(n==3){
-            cout<<"3"<<endl;
+        c=(a[0]*n-a.back())/c;
+        ll c1=a[0]-c*n;
+        if(c1<0){
+            no;
             continue;
         }
-        ll x=0;
-        v c(n+1,0);
-        if(!a.empty()){
-            cout<<a[0]<<" ";
+        bool f=1;
+        for(int i=0;i<n && f;i++){
+            if(a[i]!=c1*(i+1)+c*(n-i))f=0;
         }
-        for(int i=1;i<a.size();i++){
-            cout<<a[i]<<" ";
-            if(x<b.size()){
-                cout<<b[x]<<" ";
-                x++;
-            }
-        }
-        while(x<b.size()){
-            cout<<b[x]<<" ";
-            x++;
-        }
-        cout<<endl;
+        f?yes:no;
     }
 }
 
 int theMonster() {Saurabh Doiphode;solve();return 0;}
-
-
-//1 2 2
-//1 2 2
-//2 1 2
-//2 1 2
-//2 2 1
-//2 2 1
-//n*(n+1)/2
-//

@@ -38,57 +38,17 @@ ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) %
 void solve() {
     int t;
     cin >> t;
-    v primes=sieve(1e5);
-    // print(primes);
     while (t--) {
         ll n;
         cin >> n;
-        v a,b;
-        int j=2;
-        for(int i=3;i<=n;i++){
-            if(i==primes[j]){
-                a.push_back(i);
-                j++;
-            }
-            else b.push_back(i);
-        }
-        cout<<"2 1 ";
-        if(n==2){
-            cout<<endl;
-            continue;
-        }
-        if(n==3){
-            cout<<"3"<<endl;
-            continue;
-        }
-        ll x=0;
-        v c(n+1,0);
-        if(!a.empty()){
-            cout<<a[0]<<" ";
-        }
-        for(int i=1;i<a.size();i++){
-            cout<<a[i]<<" ";
-            if(x<b.size()){
-                cout<<b[x]<<" ";
-                x++;
-            }
-        }
-        while(x<b.size()){
-            cout<<b[x]<<" ";
-            x++;
-        }
-        cout<<endl;
+        ll x;
+        cin>>x;
+        v a=input(n);
+        ll i=0,j=n-1;
+        while(i<j && a[i]==0)i++;
+        while(i<j && a[j]==0)j--;
+        j-i+1<=x?yes:no;
     }
 }
 
 int theMonster() {Saurabh Doiphode;solve();return 0;}
-
-
-//1 2 2
-//1 2 2
-//2 1 2
-//2 1 2
-//2 2 1
-//2 2 1
-//n*(n+1)/2
-//
