@@ -35,26 +35,34 @@ ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) %
 ll mod_mul(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a * b) % m) + m) % m;}
 ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) % m;}
 
-ll rec(v &ls,ll n){
-    // if(sum>n)return;
-    // else if(sum==n)ans=mod_add(ans,1,MOD);
-
-    for(ll i=1;i<=6;i++){
-        ls.push_back(i);
-        i+rec(ls,n);
-        ls.pop_back();
-        rec(ls,n);
-    }
-}
 void solve() {
-    int t=1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         ll n;
         cin >> n;
-        ll ans=0;
-        rec(n,0,ans);
-        cout<<ans<<endl;
+        s a;
+        cin>>a;
+        // int i=0,j=0;
+        // while(i<min(n,(ll)2) && a[i]=='0')i++;
+        // while(j<min(n,(ll)2) && a[n-j-1]=='0')j++;
+        bool f=1;
+        for(int i=1;i<n;i++){
+            if(a[i-1]=='0' && a[i]=='1'){
+                a[i]='2';
+                a[i-1]='1';
+            }
+            else if(a[i]=='0' && a[i-1]=='1'){
+                a[i]='2';
+            }
+        }
+        for(int i=0;i<n && f;i++){
+            if(a[i]=='0')f=0;
+        }
+        f?yes:no;
+        // if(i==2 || j==2)no;
+        // else if(count(all(a),'1')==0)no;
+        // else yes;
     }
 }
 

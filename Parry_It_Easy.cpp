@@ -35,25 +35,34 @@ ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) %
 ll mod_mul(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a * b) % m) + m) % m;}
 ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) % m;}
 
-ll rec(v &ls,ll n){
-    // if(sum>n)return;
-    // else if(sum==n)ans=mod_add(ans,1,MOD);
-
-    for(ll i=1;i<=6;i++){
-        ls.push_back(i);
-        i+rec(ls,n);
-        ls.pop_back();
-        rec(ls,n);
-    }
-}
 void solve() {
-    int t=1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--) {
         ll n;
         cin >> n;
+        ll x;
+        cin>>x;
+        v a=input(n);
+        v b=input(n);
+        v sfx(n+1,0);
+        for(int i=n-1;i>=0;i--){
+            sfx[i]=max(sfx[i+1],a[i]);
+        }
         ll ans=0;
-        rec(n,0,ans);
+        ll x2=x;
+        for(int i=0;i<n;i++){
+            if(x<a[i]){
+                ans=0;
+                break;
+            }
+            if(x>=b[i]){
+                if(x-1>=sfx[i+1]){
+                    ans++;
+                    x--;
+                }
+            }
+        }
         cout<<ans<<endl;
     }
 }
