@@ -1,0 +1,1 @@
+{"name":"Local: anscheflove","url":"/home/themonster/programing/PROGRAMING/cpp/cf/cp/anscheflove.cpp","tests":[{"id":1749746864589,"input":"2\n5\n7 2 5 9 3\n4\n4 4 4 4","output":"0 0 2 11 4\n0 0 0 0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/themonster/programing/PROGRAMING/cpp/cf/cp/anscheflove.cpp","group":"local","local":true}

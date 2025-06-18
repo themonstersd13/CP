@@ -41,19 +41,42 @@ void solve() {
     while (t--) {
         ll n;
         cin >> n;
-        v a=input(n);
-        mp ch,ct;
-        for(auto i:a)ch[i]++;
-        ll ans=1;
+        ll m;
+        cin>>m;
+        vector<v>a(n,v(m));
+        ll maxi=0;
         for(int i=0;i<n;i++){
-            if(ch[a[i]]>=ct[a[i]] && ct[a[i]]>1){
-                ans=max(ch[a[i]]/(ct[a[i]]),ans);
+            for(int j=0;j<m;j++){
+                cin>>a[i][j];
+                maxi=max(maxi,a[i][j]);
             }
-            else if(ch[a[i]]>1)ans=max(ct[a[i]]/ch[a[i]],ans);
-            ct[a[i]]++;
-            ch[a[i]]--;
         }
-        cout<<ans<<endl;
+        bool f=0;
+        mp ch,ct;
+        ll c=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(a[i][j]==maxi){
+                    ch[i]++;
+                    ct[j]++;
+                    c++;
+                }
+            }
+        }
+        for(int i=0;i<n && !f;i++){
+            for(int j=0;j<m;j++){
+                if(ch[i]+ct[j]-(a[i][j]==maxi?1:0)==c){
+                    f=1;
+                    break;
+                }
+            }
+        }
+        if(f){
+            cout<<maxi-1<<endl;
+        } 
+        else{
+            cout<<maxi<<endl;
+        }
     }
 }
 
